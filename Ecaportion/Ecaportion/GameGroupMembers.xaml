@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ecaportion.GameGroupMembers"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             NavigationPage.HasBackButton="False"
+             Title="कृपया सहभागीहरू छनौट गर्नुहोस्"
+             >
+    <StackLayout>
+        <StackLayout>
+            <Frame>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="खेल:"></Label>
+                        <Label x:Name="GameNameheader" TextColor="Blue"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="समुह:" Margin="10,0,0,0"/>
+                        <Label x:Name="GroupNameheader" TextColor="Blue" />
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="कुल:" Margin="10,0,0,0"/>
+                        <Label x:Name="CountStd" TextColor="Blue" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+            <StackLayout BackgroundColor="White" Margin="0,-5,0,0">
+                <ListView x:Name="ListTest" SelectionMode="None" SeparatorColor="White" ItemTapped="ListTest_ItemTapped"  BackgroundColor="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Tapped="VCTapped">
+                                <ViewCell.View>
+                                    <Grid ColumnSpacing="0"  Margin="10,0,10,0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="15*"/>
+                                            <ColumnDefinition Width="80*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Row="0" Grid.Column="0"  Padding="10" BackgroundColor="SkyBlue">
+                                            <Label Text="{Binding Sno}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="1" Padding="10" BackgroundColor="PapayaWhip">
+                                            <Label Text="{Binding StdDetails}" VerticalOptions="CenterAndExpand" FontSize="16"/>
+                                        </StackLayout>
+                                        <StackLayout Grid.Row="0" Grid.Column="2" Padding="10">
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="17" BackgroundColor="White" Margin="0,-5,0,0">
+            <Button       
+			  Text="पेश गर्नुहोस्"
+			  HorizontalOptions="FillAndExpand"
+			  TextColor="White"
+			  CornerRadius="25"
+			  FontSize="20"
+			  BackgroundColor="#0D7CDE"
+              Clicked="Button_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Ecaportion.GameParticipants"
+              NavigationPage.HasBackButton="False"
+             Title="कृपया खेलका सहभागीहरू छनौट गर्नुहोस्">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80*"/>
+                    <RowDefinition Height="20*"/>
+                </Grid.RowDefinitions>
+                <StackLayout x:Name="GPLBlock" Grid.Row="0" Grid.Column="0" Padding="15">
+                    <StackLayout Orientation="Horizontal">
+                        <Grid>
+                            <Image Source="Circle.png" HeightRequest="45" WidthRequest="45"  Grid.Row="0" Grid.Column="0"/>
+                            <Label x:Name="Total" TextColor="White" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"
+VerticalOptions="CenterAndExpand"/>
+                        </Grid>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                            <Label x:Name="VGameName" TextColor="#0D7CDE" />
+                            <Label Text="खेलका सहभागीहरू"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="EndAndExpand">
+                            <Image Source="Add.png" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="EndAndExpand">
+                                <Image.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="AddPCE"/>
+                                </Image.GestureRecognizers>
+                            </Image>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout>
+                        <ListView  x:Name="ListTest" SelectionMode="None" SeparatorVisibility="None"   BackgroundColor="White">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.View>
+                                            <Grid ColumnSpacing="0" Padding="3" Margin="10,0,10,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="15*"/>
+                                                    <ColumnDefinition Width="85*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <StackLayout Grid.Row="0" Grid.Column="0"  Padding="10" BackgroundColor="SkyBlue">
+                                                    <Label Text="{Binding Sno}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                                </StackLayout>
+                                                <StackLayout Grid.Row="0" Grid.Column="1" Padding="10" BackgroundColor="PapayaWhip">
+                                                    <Label Text="{Binding STDDetails}" VerticalOptions="CenterAndExpand" FontSize="16"/>
+                                                </StackLayout>
+                                            </Grid>
+                                        </ViewCell.View>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout x:Name="ADDGPBlock" Grid.Row="0" Grid.Column="0" IsVisible="False">
+                    <StackLayout Padding="10">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="0" Grid.Column="0" Padding="0" CornerRadius="5"
+                            OutlineColor="White"   
+                            HasShadow="True">
+                                <StackLayout Padding="0" >
+                                    <Picker
+                           HorizontalOptions="CenterAndExpand"                     
+                           x:Name="GPPClass" Title="Class" SelectedIndexChanged="GPPClassSI" >
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <Frame Grid.Row="0" Grid.Column="1" Padding="0" CornerRadius="5"
+                            OutlineColor="White"   
+                            HasShadow="True">
+                                <StackLayout Padding="0" >
+                                    <Picker
+                           HorizontalOptions="CenterAndExpand"                          
+                           x:Name="GPPSection" Title="Section" SelectedIndexChanged="GPPSection_SelectedIndexChanged" >
+                                    </Picker>
+                                </StackLayout>
+                            </Frame>
+                            <Button Grid.Row="0" Grid.Column="2"	Padding="0" CornerRadius="5"		 
+			  Text="ठिक छ"
+                        x:Name="BTNPShow"
+			  HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+			  TextColor="White"			 
+			 IsEnabled="False"
+			  BackgroundColor="#0D7CDE"
+              Clicked="BTNPShow_Clicked"
+			/>
+                        </Grid>
+                    </StackLayout>
+                    <StackLayout x:Name="abcd" Orientation="Horizontal" IsVisible="False">
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+                            <Label Text="खेलको नाम:"/>
+                            <Label x:Name="Details" TextColor="Blue"/>
+                        </StackLayout>
+                        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Orientation="Horizontal">
+                            <Label Text="कुल:"/>
+                            <Label x:Name="TSelected" TextColor="Blue"/>
+                        </StackLayout>
+                        <Image Source="Save" HeightRequest="35" WidthRequest="35" HorizontalOptions="EndAndExpand" Margin="20">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="Button_Clicked"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <ListView  x:Name="ListTest1" SeparatorVisibility="Default" SelectionMode="None" ItemTapped="ListTest_ItemTapped" SeparatorColor="White" BackgroundColor="White">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell Tapped="ViewCell_Tapped" >
+                                    <ViewCell.View>
+                                        <Grid ColumnSpacing="0"  Margin="10,0,10,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15*"/>
+                                                <ColumnDefinition Width="80*"/>
+                                                <ColumnDefinition Width="5*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Padding="10" BackgroundColor="SkyBlue">
+                                                <Label Text="{Binding Sno}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Padding="10" BackgroundColor="PapayaWhip">
+                                                <Label Text="{Binding STDDetails}" VerticalOptions="CenterAndExpand" FontSize="16"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="2" Padding="10">
+                                            </StackLayout>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+                <StackLayout x:Name="BTNBlock" Grid.Row="1" Grid.Column="0" Padding="17">
+                    <Button		 
+			  Text="समुह/टोली बनाउनुहोस"
+			  HorizontalOptions="End"                    
+			  TextColor="White"
+			  CornerRadius="25"
+			  FontSize="20"
+			  BackgroundColor="#0D7CDE"
+              Clicked="Button_Clicked_1"
+			/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

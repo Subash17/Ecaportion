@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ecaportion"
+             x:Class="Ecaportion.MainPage" NavigationPage.HasBackButton="False">
+    <ContentPage Title="Weight">
+        <ContentPage.Content>
+            <StackLayout>
+                <Label Text="Hello impetus"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <!--Games Portion Layout-->
+    <ContentPage Title="Games">
+        <ContentPage.Content>
+            <StackLayout>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="75*"/>
+                        <RowDefinition Height="25*"/>
+                    </Grid.RowDefinitions>
+                    <ListView x:Name="VListOfGames" SelectionMode="None" SeparatorVisibility="None" Grid.Column="0" Grid.Row="0"  ItemTapped="GameSelected"  BackgroundColor="White" HasUnevenRows="True">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <ViewCell.View>
+                                        <Grid ColumnSpacing="0"  Padding="3" Margin="10,0,10,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="15*"/>
+                                                <ColumnDefinition Width="85*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackLayout Grid.Row="0" Grid.Column="0"  Padding="10" BackgroundColor="Wheat">
+                                                <Label Text="{Binding Sno}" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                                            </StackLayout>
+                                            <StackLayout Grid.Row="0" Grid.Column="1" Padding="10" BackgroundColor="MintCream">
+                                                <Label Text="{Binding StdData}" HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand" FontSize="16"/>
+                                            </StackLayout>
+                                        </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackLayout  Grid.Row="1" Grid.Column="0"  BackgroundColor="White">
+                        <StackLayout HorizontalOptions="End" VerticalOptions="CenterAndExpand">
+                            <Button Text="नयाँ खेल थप्नुहोस" CornerRadius="25" TextColor="White" BackgroundColor="#0D7CDE"  FontSize="20" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="0,0,15,0" Clicked="AddGame"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout x:Name="AddGameBlock" IsVisible="False" Grid.Column="0" Grid.Row="0" BackgroundColor="White">
+                        <Grid>
+                            <StackLayout 
+				Margin="10"
+                 VerticalOptions="Center"
+				  Padding="25">
+                                <StackLayout Margin="5" Orientation="Horizontal">
+                                    <Label Text="खेलको नाम"
+                               FontSize="20"
+                               TextColor="Black"
+                            FontAttributes="Bold">
+                                    </Label>
+                                    <Image Source="CloseBtn.Png" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Tapped="CloseBtnTapped"/>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
+                                <Frame CornerRadius="5"
+                            OutlineColor="White"
+                            Padding="2"
+                            Margin="5"
+                            HasShadow="True">
+                                    <StackLayout Margin="5">
+                                        <Entry
+                           HorizontalOptions="FillAndExpand"
+                           FontSize="20"
+                           x:Name="GameName" MaxLength="200">
+                                        </Entry>
+                                    </StackLayout>
+                                </Frame>
+                                <StackLayout Margin="5">
+                                    <Button
+			  Grid.Row="1"
+			  Grid.Column="1"
+			  Text="ठिक छ"
+			  HorizontalOptions="FillAndExpand"
+			  TextColor="White"
+			  CornerRadius="25"
+			  FontSize="20"
+			  BackgroundColor="#0D7CDE"
+              Clicked="GGSubmit"
+			/>
+                                </StackLayout>
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <!--layout for Result Page-->
+    <ContentPage Title="Result">
+        <ContentPage.Content>
+            <StackLayout BackgroundColor="White">
+                <Frame>
+                    <Label Text="Declare Winners" FontSize="16" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <Frame  Padding="0" CornerRadius="5" OutlineColor="White"  HasShadow="True" Margin="25,15,25,15" HorizontalOptions="StartAndExpand">
+                        <StackLayout Padding="0" >
+                            <Picker
+                           HorizontalOptions="CenterAndExpand"                     
+                           x:Name="PDWGameName" Title="Select Game" SelectedIndexChanged="PDWGameName_SelectedIndexChanged" >
+                            </Picker>
+                        </StackLayout>
+                    </Frame>
+                    <Image Source="Save" HeightRequest="35" WidthRequest="35" HorizontalOptions="EndAndExpand" Margin="20">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="SaveBtnClicked"/>
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <StackLayout>
+                    <ScrollView>
+                        <Grid x:Name="dinsert" BackgroundColor="#E6EEF5">
+                        </Grid>
+                    </ScrollView>
+                </StackLayout>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>
