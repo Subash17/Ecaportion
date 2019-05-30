@@ -307,11 +307,9 @@ namespace Ecaportion
         private void ViewCell_Tapped(object sender, EventArgs e)
         {
             var viewCell = (ViewCell)sender;
-
             if (viewCell.View.BackgroundColor == Color.Green)
             {
-                viewCell.View.BackgroundColor = Color.White;
-
+                viewCell.View.BackgroundColor = Color.Default;
             }
             else
             {
